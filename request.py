@@ -5,8 +5,10 @@ res = requests.post(
     json={
         'skids': [1,16,18],
         'presynaptic_locations': [],
+        'synapse_ids': [],
         'dset': "FAFB",
-        'platform': "CATMAID"
+        'service': "CATMAID",
+        'user': "nils.eckstein@googlemail.com"
     }
 )
 

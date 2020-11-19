@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Synister</title>
+  <meta name="Synister" content="">
+  <meta name="Nils Eckstein" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="static/styles/custom.css">
+  <link rel="stylesheet" href="static/styles/normalize.css">
+  <link rel="stylesheet" href="static/styles/skeleton.css">
+
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="templates/images/favicon.png">
+</head>
+<body>
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class=container>
+    <div class="two columns" style="text-align: center; margin-top:10%; margin-left: 43%">
+        <h2 class="title">Synister</h2>
+        <h8 class="title">Funke Lab</h8>
+    </div>
+  </div>
+  <div class="container">
+      <div class="two columns", style="width: 10%; margin-top: 10%; margin-left: 40%; margin-right: auto; text-align: center">
+          <form action="" method="POST" enctype="multipart/form-data">
+            <input type="email" value="" name="email" id="user", placeholder="lorem@ipsum.com">
+			<select id = "service", name="service">
+               <option value = "CATMAID">CATMAID</option>
+               <option value = "NEUPRINT">NEUPRINT</option>
+               <option value = "FLYWIRE">FLYWIRE</option>
+               <option value = "FAFB">FAFB (NO TRANSFORM)</option>
+               <option value = "HEMI">HEMI (NO TRANSFORM)</option>
+             </select>
+			<select id = "type", name="type">
+               <option value = "POSITION">BY POSITION</option>
+               <option value = "NEURON">BY NEURON</option>
+             </select>
+            <input type="file" name="file" accept=".csv,.txt">
+            <input type="submit" value="Submit" name="submit">
+          </form>
+      </div>
+    </div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+    function delete_flash(flash){
+        $(flash).parent().remove()
+    }
+</script>
+
+<div class="container">
+	{% with messages = get_flashed_messages(with_categories=True) %}
+	  {% if messages %}
+	    {% for category, message in messages %}
+        <div class="five columns", id="{{category}}">
+		  <button type="button" class="button" onclick=delete_flash(this)>
+              <span>X</span>
+          </button>
+			{{message}}
+		  </div>
+		{% endfor %}
+	  {% endif %}
+	{% endwith %}
+</div>
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+    </div>
+    </div>
+</html>
