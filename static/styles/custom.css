@@ -1,3 +1,63 @@
 #error {
-  color: #ff0000; }
+  color: red; 
+  display: flex;
+  justify-content: center;
+}
+#info {
+  color: yellow; 
+  display: flex;
+  justify-content: center;
+}
+#success {
+  color: green; 
+  display: flex;
+  justify-content: center;
+}
+body {
+  background-image: url("bg.png");
+  background-size: 1800px 1000px;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: calc(50% + 20px); 
+  background-color: black;
+}
+.title {
+  color: white;
+}
+#centerui {
+  display: flex;
+  justify-content: center;
+ }
 
+#formgroup{
+ border: 1px solid white;
+ border-radius: 12px;
+ text-align: center;
+}
+#infobutton{
+ color: white;
+ border-radius: 10px;
+ position: fixed;
+ bottom: 2px;
+ left: 2px; 
+}
+#infotext {
+  width: 500px;
+  height: 750px;
+  border: 1px solid white;
+  padding: 2%;
+  border-radius: 12px;
+  color: white;
+  position: absolute;
+  bottom: 60px;
+  left: 0px;
+  display: none;
+}
+#infodiv {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 500px;
+  height: 1000px;
+
+}

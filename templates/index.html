@@ -7,7 +7,6 @@
   <meta charset="utf-8">
   <title>Synister</title>
   <meta name="Synister" content="">
-  <meta name="Nils Eckstein" content="">
 
   <!-- Mobile Specific Metas
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -23,6 +22,10 @@
   <link rel="stylesheet" href="static/styles/normalize.css">
   <link rel="stylesheet" href="static/styles/skeleton.css">
 
+  <!-- JS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script type="text/javascript" src="static/js/main.js"></script>
 
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -32,49 +35,86 @@
 
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <div class=container>
-    <div class="two columns" style="text-align: center; margin-top:10%; margin-left: 43%">
+  <div class=container, id="centerui">
+      <div class="three columns" style="width: 100%; padding-top:5%; text-align: center">
         <h2 class="title">Synister</h2>
-        <h8 class="title">Funke Lab</h8>
+        <h6 class="title">Funke Lab</h6>
     </div>
   </div>
-  <div class="container">
-      <div class="two columns", style="width: 10%; margin-top: 10%; margin-left: 40%; margin-right: auto; text-align: center">
+
+
+  <div class="container", id="centerui">
+      <div class="two columns", style="width:25%; margin:auto; margin-top:6%; padding-top:5%", id="formgroup">
           <form action="" method="POST" enctype="multipart/form-data">
-            <input type="email" value="" name="email" id="user", placeholder="lorem@ipsum.com">
-			<select id = "service", name="service">
-               <option value = "CATMAID">CATMAID</option>
-               <option value = "NEUPRINT">NEUPRINT</option>
-               <option value = "FLYWIRE">FLYWIRE</option>
-               <option value = "FAFB">FAFB (NO TRANSFORM)</option>
-               <option value = "HEMI">HEMI (NO TRANSFORM)</option>
+            <input type="email" value="" name="email" id="user", placeholder="lorem@ipsum.com"> 
+			<select id="service" name="service", onchange="toggle(this)">
+               <option value="CATMAID">CATMAID</option>
+               <option value="NEUPRINT">NEUPRINT</option>
+               <option value="FLYWIRE">FLYWIRE</option>
+               <option value="FAFB">FAFB (NO TRANSFORM)</option>
+               <option value="HEMI">HEMI (NO TRANSFORM)</option>
              </select>
-			<select id = "type", name="type">
-               <option value = "POSITION">BY POSITION</option>
-               <option value = "NEURON">BY NEURON</option>
+			<select id="type" name="type">
+               <option value="POSITION">BY POSITION</option>
+               <option value="NEURON">BY NEURON</option>
              </select>
-            <input type="file" name="file" accept=".csv,.txt">
+            <input type="file" name="file" accept=".csv,.txt", style="margin-left:8%; color: white;">
             <input type="submit" value="Submit" name="submit">
           </form>
       </div>
     </div>
 
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<div class="container", id="infodiv">
+<button type="button" class="button" id="infobutton" >?</button>
+<div class="container", id="infotext">
+<p>Hello Traveller,<br>
+This website is a service for predicting neurotransmitter identity of presynaptic sites from Electron Microscopy images, as described <a href=https://www.biorxiv.org/content/10.1101/2020.06.12.148775v2 target="_blank">here.</a> In order to use it, you need to do the following things:
+<ol>
+    <li>Register, by sending us an <a href="mailto:ecksteinn@hhmi.org?subject=Synister Access Request&body=Tell us briefly who you are and what you want to do with this service. We reject no one but if you have e.g. extremly large volumes of data or specific requests that are not supported right now we can assist you with that. The mail address this request is sent from will be granted access.">email</a> from the address you would like to authorize. This is a manual process, so expect some delay. If you do not hear back from us within a week, send another mail.</li>
+    <li>Once you received confirmation of your registration, type your registered mail address into the email field.</li>
+    <li>Select the service/dataset you want to predict neurotransmitters for and the type of data (Positions/Neuron Identifiers) you have. Currently only CATMAID supports a query via neuron identifier (skid). Depending on the query type you need to provide different data:
+    <ul>
+        <li> BY POSITION: A csv file with columns <i>skid,id,x,y,z</i>, where the positions <i>x,y,z</i> need to be in the selected dataset/service space you retrieved/annotated them in. <i>id</i> needs to be an unique integer identifier for each synapse and <i>skid</i> needs to be an unique integer neuron/skeleton identifier for each neuron. For an example query csv file see <a href="example_position_query.csv", target="_blank">here</a>.</li>
+        <li> BY NEURON: A csv file with column <i>skid</i>, corresponding to a neuron identifier in the selected service. Annotated pre-synaptic positions will be retrieved from the respective service and the given <i>skid</i>. For an example query csv file see <a href="example_skid_query.csv", target="_blank">here</a>.</li>
+    </ul>
+    </li>
+    <li> Select the csv file you want to process</li>
+    <li> Submit the job. Your job will be queued and you will receive a confirmation email including estimated processing time shortly. Once the job is finished you will receive a second email with the results.</li>
+</ol>
+</p>
+</div>
+</div>
 <script>
     function delete_flash(flash){
         $(flash).parent().remove()
     }
 </script>
+<script>
+setTimeout(function() { $('#error').fadeOut('slow'); }, 5000);
+</script>
+<script>
+setTimeout(function() { $('#info').fadeOut('slow'); }, 5000);
+</script>
+<script>
+setTimeout(function() { $('#success').fadeOut('slow'); }, 5000);
+</script>
+<script>
+$(function() {
+  $("#infobutton").mouseenter(function() {
+    $("#infotext").fadeIn();
+  });
+  $("#infodiv").mouseleave(function() {
+    $("#infotext").fadeOut();
+  });
+});
+</script>
 
-<div class="container">
+
+<div class="container", id="centerui">
 	{% with messages = get_flashed_messages(with_categories=True) %}
 	  {% if messages %}
 	    {% for category, message in messages %}
-        <div class="five columns", id="{{category}}">
-		  <button type="button" class="button" onclick=delete_flash(this)>
-              <span>X</span>
-          </button>
+        <div class="five columns", id="{{category}}", name="flash">
 			{{message}}
 		  </div>
 		{% endfor %}
@@ -85,6 +125,4 @@
 <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 </body>
-    </div>
-    </div>
 </html>
