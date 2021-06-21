@@ -1,3 +1,7 @@
+# SYNISTEREST
+Flask based web service for neurotransmitter predictions.
+
+## Installation
 Install redis-server
 ```
 sudo apt-get install redis-server
@@ -9,3 +13,6 @@ conda create -n synisterest python=3.8
 pip install -r requirements.txt
 pip install .
 ```
+
+## Start Server
+
