@@ -74,8 +74,8 @@ This website is a service for predicting neurotransmitter identity of presynapti
     <li>Once you received confirmation of your registration, type your registered mail address into the email field.</li>
     <li>Select the service/dataset you want to predict neurotransmitters for and the type of data (Positions/Neuron Identifiers) you have. Currently only CATMAID supports a query via neuron identifier (skid). Depending on the query type you need to provide different data:
     <ul>
-        <li> BY POSITION: A csv file with columns <i>skid,id,x,y,z</i>, where the positions <i>x,y,z</i> need to be in the selected dataset/service space you retrieved/annotated them in. <i>id</i> needs to be an unique integer identifier for each synapse and <i>skid</i> needs to be an unique integer neuron/skeleton identifier for each neuron. For an example query csv file see <a href="example_position_query.csv", target="_blank">here</a>.</li>
-        <li> BY NEURON: A csv file with column <i>skid</i>, corresponding to a neuron identifier in the selected service. Annotated pre-synaptic positions will be retrieved from the respective service and the given <i>skid</i>. For an example query csv file see <a href="example_skid_query.csv", target="_blank">here</a>.</li>
+        <li> BY POSITION: A csv file with columns <i>skid,id,x,y,z</i>, where the positions <i>x,y,z</i> need to be in the selected dataset/service space you retrieved/annotated them in. <i>id</i> needs to be an unique integer identifier for each synapse and <i>skid</i> needs to be an unique integer neuron/skeleton identifier for each neuron. For an example query csv file see <a href="static/example_position_request.csv", target="_blank">here</a>.</li>
+        <li> BY NEURON: A csv file with column <i>skid</i>, corresponding to a neuron identifier in the selected service. Annotated pre-synaptic positions will be retrieved from the respective service and the given <i>skid</i>. For an example query csv file see <a href="static/example_skid_request.csv", target="_blank">here</a>.</li>
     </ul>
     </li>
     <li> Select the csv file you want to process</li>

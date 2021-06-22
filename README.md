@@ -2,17 +2,13 @@
 Flask based web service for neurotransmitter predictions.
 
 ## Installation
-Install redis-server
 ```
-sudo apt-get install redis-server
-```
-
-Install package
-```
-conda create -n synisterest python=3.8
+conda create -n synisterest python=3.6
 pip install -r requirements.txt
 pip install .
 ```
 
-## Start Server
-
+## Start Server (Dev)
+```
+python app.py
+```
