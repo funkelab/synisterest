@@ -5,7 +5,6 @@ Flask based web service for neurotransmitter predictions.
 ```
 conda create -n synisterest python=3.6
 pip install -r requirements.txt
-pip install .
 ```
 
 ## Start Server (Dev)
