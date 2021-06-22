@@ -18,3 +18,6 @@ This flask page allows a user to upload csv file with skids/body-ids or synapse 
 
 ## TODO
 See issues.
+
+## What should it look like?
+![](design.png?raw=true)
