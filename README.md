@@ -23,7 +23,7 @@ import hashlib
 
 mail = lorem.ipsum@mail.com
 user_hash = hashlib.sha512(str.encode(mail)).hexdigest()
-
+```
 
 ## TODO
 See issues.
